@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>teaching loading design</title>      
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+</head>
+<body>
+      <style>
+            div
+            {
+                  position: absolute;
+                  transform: translate(-50%,-50%);
+                  left:50%;
+                  top:50%
+            }
+      </style>
+      <div id="loader"></div>
+
+      <script>
+            $(document).ready(function(){
+                  $("#loader").circleProgress({
+                        value: 1,
+                        size: 70,
+                        thickness: 5,
+                        fill: {
+                          color: "#ffa500"
+                        }
+                      });            
+                      var progress = 0;
+                      var timer = setInterval(function() {
+                        progress += 0.2;
+                        if (progress >= 1) {
+                          clearInterval(timer);
+                          $("#loader").circleProgress({ value: 1 });                          
+                        } else {
+                          $("#loader").circleProgress({ value: progress });
+                        }
+                      }, 1000);    
+            })
+      </script>
+</body>
+</html>
